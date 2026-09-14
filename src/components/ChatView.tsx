@@ -41,16 +41,16 @@ export default function ChatView({ state, onSendMessage, onClearHistory, isSendi
   };
 
   return (
-    <div id="chat-container" className="flex flex-col h-[calc(100vh-130px)] md:h-[calc(100vh-64px)] max-w-4xl mx-auto w-full bg-white border border-gray-200 rounded-xl overflow-hidden mt-2 shadow-xs animate-fade-in">
+    <div id="chat-container" className="flex flex-col h-[calc(100dvh-136px)] md:h-[calc(100vh-64px)] max-w-4xl mx-auto w-full bg-white border border-gray-200 rounded-xl overflow-hidden mt-1 sm:mt-2 shadow-xs animate-fade-in">
       {/* Mini Info Panel */}
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-50 border-b border-gray-200">
-        <div className="flex items-center space-x-2">
-          <Database className="w-4 h-4 text-gray-700" />
-          <span className="text-xs font-mono font-medium text-gray-500 uppercase tracking-wider">Indexed Workspaces: Personal, Artbit, Axen, Biggan, Habits, Prayers</span>
+      <div className="flex items-center justify-between px-3 sm:px-4 py-2 bg-gray-50 border-b border-gray-200 gap-2">
+        <div className="flex items-center space-x-2 min-w-0">
+          <Database className="w-4 h-4 text-gray-700 shrink-0" />
+          <span className="text-[11px] sm:text-xs font-mono font-medium text-gray-500 uppercase tracking-wider truncate">Indexed Workspaces: Personal, Artbit, Axen, Biggan</span>
         </div>
         <button 
           onClick={onClearHistory}
-          className="flex items-center space-x-1 px-2 py-1 text-xs text-gray-400 hover:text-gray-600 rounded hover:bg-gray-100 transition-colors"
+          className="flex items-center space-x-1 px-2 py-1 text-xs text-gray-400 hover:text-gray-600 rounded hover:bg-gray-100 transition-colors shrink-0"
           title="Clear Chat History"
         >
           <RefreshCw className="w-3 h-3" />

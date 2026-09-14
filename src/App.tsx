@@ -531,7 +531,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F3F4F6] flex flex-col pb-24 md:pb-6 md:pl-64">
+    <div className="min-h-screen bg-[#F3F4F6] flex flex-col pb-20 md:pb-6 md:pl-64">
       
       {/* Fixed Desktop Left Sidebar */}
       <aside className="hidden md:flex flex-col fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200 p-5 shrink-0 z-20">
@@ -593,16 +593,20 @@ export default function App() {
       </aside>
 
       {/* Top Header Bar */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-3xs">
-        <div className="flex items-center space-x-3">
+      <header className="bg-white border-b border-gray-200 px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between sticky top-0 z-10 shadow-3xs">
+        <div className="flex items-center space-x-2.5 sm:space-x-3">
+          {/* Mobile Logo Mark */}
+          <div className="md:hidden w-7 h-7 rounded-lg bg-black flex items-center justify-center text-white font-bold text-xs shrink-0 shadow-xs">
+            C
+          </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-sm font-semibold text-gray-950 tracking-tight uppercase tracking-wider">{header.main}</h2>
+              <h2 className="text-xs sm:text-sm font-bold text-gray-950 tracking-tight uppercase tracking-wider">{header.main}</h2>
               {header.isLive && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
               )}
             </div>
-            <span className={`text-[10px] font-bold uppercase tracking-wider font-mono mt-0.5 block ${
+            <span className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-wider font-mono mt-0.5 block ${
               header.isLive ? "text-emerald-600" : "text-gray-400"
             }`}>
               {header.status}
@@ -611,31 +615,31 @@ export default function App() {
         </div>
 
         {/* Global actions */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <button 
             onClick={() => setActiveTab("Settings")}
-            className="p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+            className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer min-w-[40px] min-h-[40px] flex items-center justify-center"
             title="System Settings"
           >
-            <Settings className="w-5 h-5" />
+            <Settings className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
           </button>
           
           <button
             onClick={() => setShowLoginModal(true)}
-            className="flex items-center space-x-2 p-1 hover:bg-gray-50 rounded-full border border-gray-200 transition-all cursor-pointer group"
+            className="flex items-center space-x-2 p-1 hover:bg-gray-50 rounded-full border border-gray-200 transition-all cursor-pointer group min-w-[36px] min-h-[36px]"
             title="Account & Profile Settings"
           >
             <img 
               src={userAccount?.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces"} 
               alt="Avatar"
-              className="w-8 h-8 rounded-full object-cover group-hover:scale-105 transition-transform"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover group-hover:scale-105 transition-transform"
             />
           </button>
         </div>
       </header>
 
       {/* Main Context Wrapper with Responsive Paddings */}
-      <main className="p-4 md:p-6 flex-1 overflow-x-hidden">
+      <main className="p-3 sm:p-4 md:p-6 flex-1 overflow-x-hidden w-full max-w-7xl mx-auto">
         {activeTab === "Hub" && (
           <HubView 
             state={state}
@@ -709,7 +713,7 @@ export default function App() {
       />
 
       {/* Fixed Bottom Tab Navigation Bar for Mobile */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 flex items-center justify-around py-2.5 z-30 shadow-lg">
+      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-gray-200 flex items-center justify-around pt-2 pb-[max(0.6rem,env(safe-area-inset-bottom,0px))] z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
         {[
           { id: "Hub", label: "Dashboard", icon: LayoutGrid },
           { id: "Chat", label: "Chat", icon: MessageSquare },
@@ -724,15 +728,15 @@ export default function App() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className="flex flex-col items-center justify-center flex-1 py-1 focus:outline-none cursor-pointer"
+              className="flex flex-col items-center justify-center flex-1 py-1 min-h-[44px] focus:outline-none cursor-pointer transition-all active:scale-95"
             >
-              <div className={`p-1 rounded-full transition-all ${
-                isSelected ? "text-gray-900 bg-gray-50" : "text-gray-400"
+              <div className={`p-1.5 rounded-xl transition-all ${
+                isSelected ? "text-white bg-black shadow-2xs" : "text-gray-400 hover:text-gray-700"
               }`}>
-                <Icon className="w-5 h-5" />
+                <Icon className="w-4.5 h-4.5" />
               </div>
-              <span className={`text-[9px] font-bold uppercase tracking-wider mt-0.5 ${
-                isSelected ? "text-gray-900" : "text-gray-400"
+              <span className={`text-[9px] font-bold uppercase tracking-wider mt-1 transition-colors ${
+                isSelected ? "text-gray-950 font-extrabold" : "text-gray-400 font-medium"
               }`}>
                 {tab.label}
               </span>

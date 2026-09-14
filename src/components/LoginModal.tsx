@@ -185,40 +185,40 @@ export default function LoginModal({ isOpen, currentUser, deviceId, onLoginSucce
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-md animate-fade-in">
-      <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/65 backdrop-blur-md animate-fade-in">
+      <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col relative max-h-[92vh]">
         
         {/* Top Accent / Banner */}
-        <div className="bg-gradient-to-r from-gray-900 via-black to-gray-800 text-white px-6 py-5 relative">
+        <div className="bg-gradient-to-r from-gray-900 via-black to-gray-800 text-white px-4 sm:px-6 py-4 sm:py-5 relative">
           {canDismiss && onClose && (
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-1.5 text-gray-400 hover:text-white rounded-lg bg-white/10 hover:bg-white/20 transition-all cursor-pointer"
+              className="absolute top-3 sm:top-4 right-3 sm:right-4 p-1.5 text-gray-400 hover:text-white rounded-lg bg-white/10 hover:bg-white/20 transition-all cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
           )}
 
           <div className="flex items-center space-x-3 mb-1.5">
-            <div className="p-2 bg-white/10 rounded-xl border border-white/20 backdrop-blur-xs">
+            <div className="p-2 bg-white/10 rounded-xl border border-white/20 backdrop-blur-xs shrink-0">
               <ShieldCheck className="w-5 h-5 text-emerald-400" />
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center space-x-2 flex-wrap gap-y-1">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 font-mono">
                   Device Authentication
                 </span>
                 <span className="inline-flex items-center space-x-1 text-[9px] font-mono text-gray-300 bg-white/10 px-1.5 py-0.5 rounded">
                   <Laptop className="w-2.5 h-2.5" />
-                  <span>{deviceId ? deviceId.substring(0, 10) + "..." : "New Device"}</span>
+                  <span>{deviceId ? deviceId.substring(0, 8) + "..." : "New Device"}</span>
                 </span>
               </div>
-              <h2 className="text-xl font-semibold text-white tracking-tight">
+              <h2 className="text-base sm:text-xl font-semibold text-white tracking-tight truncate">
                 {authMode === "signin" ? "Device Login Required" : "Create Account & Authorize Device"}
               </h2>
             </div>
           </div>
-          <p className="text-xs text-gray-300 leading-relaxed pl-11">
+          <p className="text-xs text-gray-300 leading-relaxed sm:pl-11 mt-1">
             Every new device requires email and password authentication to access the Celouse OS workspace.
           </p>
         </div>
@@ -250,7 +250,7 @@ export default function LoginModal({ isOpen, currentUser, deviceId, onLoginSucce
         </div>
 
         {/* Main Form Body */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-5 overflow-y-auto max-h-[68vh]">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-y-auto max-h-[62vh]">
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-600 font-medium animate-fade-in flex items-center space-x-2">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />

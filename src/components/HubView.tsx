@@ -336,7 +336,7 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
   return (
     <div className="space-y-6 max-w-4xl mx-auto w-full pb-10">
       {/* Daily Gemini Inspiration Banner */}
-      <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-5 transition-all">
+      <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 transition-all">
         <div className="flex-1 space-y-2">
           <div className="flex items-center space-x-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-widest font-mono">
             <Sparkles className="w-3.5 h-3.5 text-black animate-pulse" />
@@ -349,7 +349,7 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
             </div>
           ) : (
             <div>
-              <p className="text-sm font-medium text-gray-800 leading-relaxed italic">
+              <p className="text-xs sm:text-sm font-medium text-gray-800 leading-relaxed italic">
                 "{quote?.quote || "Precision, discipline, and vision are the keystones of continuous transformation."}"
               </p>
               <p className="text-[10px] text-gray-500 font-bold font-mono uppercase mt-1">
@@ -362,7 +362,7 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
         {/* Improved Gemini CTA Button */}
         <button
           onClick={() => setShowVoice(true)}
-          className="flex items-center space-x-2 px-5 py-3 bg-black hover:bg-neutral-800 text-white rounded-xl text-xs font-bold transition-all shadow-xs uppercase tracking-wider shrink-0 cursor-pointer group active:scale-95"
+          className="w-full sm:w-auto flex items-center justify-center space-x-2 px-4 sm:px-5 py-3 bg-black hover:bg-neutral-800 text-white rounded-xl text-xs font-bold transition-all shadow-xs uppercase tracking-wider shrink-0 cursor-pointer group active:scale-95 min-h-[44px]"
         >
           <Mic className="w-4 h-4 text-white group-hover:scale-110 transition-transform animate-bounce" />
           <span>Ask Gemini Voice</span>
@@ -370,7 +370,7 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         
         {/* Today's Tasks */}
         <div id="today-tasks-card" className="bg-white border border-gray-200 rounded-xl p-5 shadow-xs flex flex-col">
@@ -488,17 +488,17 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
             </span>
           </div>
 
-          <div className="flex items-center justify-between py-6 px-1">
+          <div className="flex items-center justify-between py-4 sm:py-6 px-0.5 sm:px-1 overflow-x-auto scrollbar-none gap-1 sm:gap-2">
             {state.prayers.map((prayer) => {
               const isCompleted = prayer.completed;
               const isActive = prayer.status === "active";
               return (
                 <div 
                   key={prayer.id} 
-                  className="flex flex-col items-center space-y-2 group cursor-pointer"
+                  className="flex flex-col items-center space-y-1.5 sm:space-y-2 group cursor-pointer shrink-0 min-w-[52px]"
                   onClick={() => onTogglePrayer(prayer.id, !prayer.completed)}
                 >
-                  <div className={`w-11 h-11 rounded-full flex items-center justify-center border transition-all ${
+                  <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center border transition-all ${
                     isCompleted 
                       ? "bg-black border-black text-white shadow-sm" 
                       : isActive 
@@ -507,13 +507,13 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
                   }`}>
                     {isCompleted ? <CheckCircle className="w-5 h-5" /> : getPrayerIcon(prayer.name)}
                   </div>
-                  <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">{prayer.name}</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold text-gray-500 uppercase tracking-wider">{prayer.name}</span>
                 </div>
               );
             })}
           </div>
 
-          <p className="text-[11px] text-gray-400 font-mono text-center mt-auto py-1">
+          <p className="text-[10px] sm:text-[11px] text-gray-400 font-mono text-center mt-auto py-1">
             Current Active Window: <span className="font-bold text-black">Asr (03:45 PM)</span>
           </p>
         </div>
@@ -521,15 +521,15 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
       </div>
 
       {/* Quick Notes Card */}
-      <div id="quick-notes-card" className="bg-white border border-gray-200 rounded-xl p-5 shadow-xs">
+      <div id="quick-notes-card" className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 shadow-xs">
         <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
           <div className="flex items-center space-x-2">
             <div className="p-1.5 bg-gray-50 rounded-lg border border-gray-200 text-gray-700">
               <StickyNote className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-base font-semibold text-gray-950">Quick Notes</h3>
-              <p className="text-xs text-gray-400 font-medium mt-0.5">Jot down thoughts, ideas, or clip lists instantly</p>
+              <h3 className="text-sm sm:text-base font-semibold text-gray-950">Quick Notes</h3>
+              <p className="text-[11px] sm:text-xs text-gray-400 font-medium mt-0.5">Jot down thoughts, ideas, or clip lists instantly</p>
             </div>
           </div>
           <div className="flex items-center space-x-2 text-xs font-mono">
@@ -546,7 +546,7 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
             value={localNotes}
             onChange={(e) => setLocalNotes(e.target.value)}
             placeholder="Type your scratchpad ideas or temporary thoughts here... They will automatically save and persist."
-            className="w-full min-h-[140px] bg-gray-50/50 hover:bg-gray-50 border border-gray-200 focus:border-black focus:ring-1 focus:ring-black focus:bg-white rounded-xl p-3.5 text-xs text-gray-800 outline-none transition-all resize-y font-sans leading-relaxed"
+            className="w-full min-h-[140px] bg-gray-50/50 hover:bg-gray-50 border border-gray-200 focus:border-black focus:ring-1 focus:ring-black focus:bg-white rounded-xl p-3 sm:p-3.5 text-xs text-gray-800 outline-none transition-all resize-y font-sans leading-relaxed"
           />
           
           <div className="absolute bottom-3.5 right-3.5 flex items-center space-x-1.5">
@@ -555,9 +555,9 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
                 navigator.clipboard.writeText(localNotes);
               }}
               title="Copy to Clipboard"
-              className="p-1.5 bg-white border border-gray-200 hover:border-black text-gray-500 hover:text-black rounded-lg shadow-2xs transition-all cursor-pointer active:scale-95 animate-fade-in"
+              className="p-2 bg-white border border-gray-200 hover:border-black text-gray-500 hover:text-black rounded-lg shadow-2xs transition-all cursor-pointer active:scale-95 animate-fade-in min-w-[36px] min-h-[36px] flex items-center justify-center"
             >
-              <Copy className="w-3.5 h-3.5" />
+              <Copy className="w-4 h-4" />
             </button>
             <button
               onClick={() => {
@@ -566,49 +566,49 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
                 }
               }}
               title="Clear Notes"
-              className="p-1.5 bg-white border border-gray-200 hover:border-red-500 text-gray-500 hover:text-red-500 rounded-lg shadow-2xs transition-all cursor-pointer active:scale-95 animate-fade-in"
+              className="p-2 bg-white border border-gray-200 hover:border-red-500 text-gray-500 hover:text-red-500 rounded-lg shadow-2xs transition-all cursor-pointer active:scale-95 animate-fade-in min-w-[36px] min-h-[36px] flex items-center justify-center"
             >
-              <Trash2 className="w-3.5 h-3.5" />
+              <Trash2 className="w-4 h-4" />
             </button>
           </div>
         </div>
       </div>
 
       {/* Monthly Ledger Card */}
-      <div id="monthly-ledger-card" className="bg-white border border-gray-200 rounded-xl p-5 shadow-xs">
-        <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-5">
+      <div id="monthly-ledger-card" className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 shadow-xs">
+        <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4 sm:mb-5">
           <div>
-            <h3 className="text-base font-semibold text-gray-950">Monthly Ledger</h3>
-            <p className="text-xs text-gray-400 font-medium mt-0.5">Financial statistics & budget performance</p>
+            <h3 className="text-sm sm:text-base font-semibold text-gray-950">Monthly Ledger</h3>
+            <p className="text-[11px] sm:text-xs text-gray-400 font-medium mt-0.5">Financial statistics & budget performance</p>
           </div>
           <span className="text-[10px] font-extrabold text-gray-400 tracking-wider uppercase font-mono bg-gray-50 px-2 py-1 rounded border border-gray-100">OCTOBER 2023</span>
         </div>
 
         {/* Ledger Indicators Grid */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 mb-4 sm:mb-6">
           <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center">
             <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 font-mono block">Net Profit</span>
-            <span className="text-xl font-bold font-mono text-gray-900 block mt-1.5">৳{ledgerTotal.toLocaleString()}</span>
+            <span className="text-lg sm:text-xl font-bold font-mono text-gray-900 block mt-1.5">৳{ledgerTotal.toLocaleString()}</span>
             <span className="text-[9px] font-bold text-emerald-500 uppercase tracking-widest block mt-1">BDT</span>
           </div>
           <div className="p-3 bg-emerald-50/20 rounded-lg border border-emerald-100 text-center">
             <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-700 font-mono block">Revenue</span>
-            <span className="text-xl font-bold font-mono text-emerald-600 block mt-1.5">৳{totalIncome.toLocaleString()}</span>
+            <span className="text-lg sm:text-xl font-bold font-mono text-emerald-600 block mt-1.5">৳{totalIncome.toLocaleString()}</span>
             <span className="text-[9px] font-bold text-emerald-600/80 uppercase tracking-widest block mt-1">BDT</span>
           </div>
           <div className="p-3 bg-red-50/20 rounded-lg border border-red-100 text-center">
             <span className="text-[10px] font-bold uppercase tracking-widest text-red-700 font-mono block">Expenses</span>
-            <span className="text-xl font-bold font-mono text-red-600 block mt-1.5">৳{totalExpenses.toLocaleString()}</span>
+            <span className="text-lg sm:text-xl font-bold font-mono text-red-600 block mt-1.5">৳{totalExpenses.toLocaleString()}</span>
             <span className="text-[9px] font-bold text-red-600/80 uppercase tracking-widest block mt-1">BDT</span>
           </div>
         </div>
 
         {/* Custom SVG Bar Chart */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-3 sm:p-4">
           <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4 flex items-center">
             <TrendingUp className="w-4 h-4 text-black mr-1" /> Budget Allocation by Workspace
           </h4>
-          <div className="h-28 flex items-end justify-between px-4 pt-4 border-b border-gray-200">
+          <div className="h-28 flex items-end justify-between px-2 sm:px-4 pt-4 border-b border-gray-200">
             {chartBars.map((bar) => {
               const heightPct = maxVal > 0 ? (bar.val / maxVal) * 90 : 20;
               return (
@@ -618,7 +618,7 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
                     ৳{bar.val}
                   </div>
                   <div 
-                    className="w-8 rounded-t-sm transition-all duration-500 hover:brightness-95 shadow-xs"
+                    className="w-6 sm:w-8 rounded-t-sm transition-all duration-500 hover:brightness-95 shadow-xs"
                     style={{ 
                       height: `${heightPct}%`, 
                       backgroundColor: bar.color 
@@ -629,10 +629,10 @@ export default function HubView({ state, onNavigateToTab, onToggleTask, onToggle
             })}
           </div>
           {/* Labels Row */}
-          <div className="flex justify-between px-4 mt-2">
+          <div className="flex justify-between px-1 sm:px-4 mt-2">
             {chartBars.map((bar) => (
               <div key={bar.label} className="flex-1 text-center">
-                <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider block truncate">{bar.label}</span>
+                <span className="text-[8px] sm:text-[9px] font-bold text-gray-500 uppercase tracking-wider block truncate">{bar.label}</span>
               </div>
             ))}
           </div>

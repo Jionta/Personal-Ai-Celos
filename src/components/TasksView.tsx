@@ -184,14 +184,14 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
   return (
     <div className="max-w-4xl mx-auto w-full space-y-6 pb-12" id="tasks-dashboard-container">
       {/* Top Controls Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-white p-4 border border-gray-200 rounded-xl shadow-xs animate-fade-in">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 sm:gap-4 bg-white p-3.5 sm:p-4 border border-gray-200 rounded-xl shadow-xs animate-fade-in">
         {/* Workspace Pills */}
-        <div className="flex items-center space-x-1.5 overflow-x-auto scrollbar-none pb-1 sm:pb-0">
+        <div className="flex items-center space-x-1.5 overflow-x-auto scrollbar-none pb-1 md:pb-0 w-full md:w-auto">
           {filterPills.map(pill => (
             <button 
               key={pill}
               onClick={() => setActiveFilter(pill)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer whitespace-nowrap ${
                 (activeFilter === pill || (pill === "All Tasks" && activeFilter === "All")) 
                   ? "bg-black text-white border-black font-semibold shadow-2xs" 
                   : "bg-white text-gray-600 border-gray-200 hover:border-gray-300"
@@ -203,12 +203,12 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
         </div>
 
         {/* View Mode & Add and Sort */}
-        <div className="flex items-center space-x-2 shrink-0">
+        <div className="flex flex-wrap items-center justify-between sm:justify-end gap-2 w-full md:w-auto">
           {/* List vs Board vs Calendar Toggle */}
           <div className="flex items-center space-x-1 bg-gray-100 p-0.5 rounded-lg border border-gray-200">
             <button 
               onClick={() => setViewMode("List")}
-              className={`px-2.5 py-1 text-[10px] font-bold uppercase rounded-md transition-all cursor-pointer flex items-center space-x-1 ${
+              className={`px-2 sm:px-2.5 py-1 text-[10px] font-bold uppercase rounded-md transition-all cursor-pointer flex items-center space-x-1 ${
                 viewMode === "List" 
                   ? "bg-white text-gray-800 border border-gray-200 shadow-3xs" 
                   : "text-gray-500 hover:text-gray-700"
@@ -219,7 +219,7 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
             </button>
             <button 
               onClick={() => setViewMode("Board")}
-              className={`px-2.5 py-1 text-[10px] font-bold uppercase rounded-md transition-all cursor-pointer flex items-center space-x-1 ${
+              className={`px-2 sm:px-2.5 py-1 text-[10px] font-bold uppercase rounded-md transition-all cursor-pointer flex items-center space-x-1 ${
                 viewMode === "Board" 
                   ? "bg-white text-gray-800 border border-gray-200 shadow-3xs" 
                   : "text-gray-500 hover:text-gray-700"
@@ -230,7 +230,7 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
             </button>
             <button 
               onClick={() => setViewMode("Calendar")}
-              className={`px-2.5 py-1 text-[10px] font-bold uppercase rounded-md transition-all cursor-pointer flex items-center space-x-1 ${
+              className={`px-2 sm:px-2.5 py-1 text-[10px] font-bold uppercase rounded-md transition-all cursor-pointer flex items-center space-x-1 ${
                 viewMode === "Calendar" 
                   ? "bg-white text-gray-800 border border-gray-200 shadow-3xs" 
                   : "text-gray-500 hover:text-gray-700"
@@ -241,26 +241,28 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
             </button>
           </div>
 
-          <div className="relative">
-            <select 
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="appearance-none pl-3 pr-8 py-1.5 bg-white border border-gray-200 hover:border-gray-300 text-xs font-semibold rounded-lg outline-none cursor-pointer text-gray-600 font-mono"
-            >
-              <option value="Due Date">Due Date</option>
-              <option value="Priority">Priority</option>
-              <option value="Completed">Completed</option>
-            </select>
-            <ChevronDown className="w-3 h-3 text-gray-400 absolute right-2.5 top-2.5 pointer-events-none" />
-          </div>
+          <div className="flex items-center space-x-2">
+            <div className="relative">
+              <select 
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="appearance-none pl-2.5 pr-7 py-1.5 bg-white border border-gray-200 hover:border-gray-300 text-xs font-semibold rounded-lg outline-none cursor-pointer text-gray-600 font-mono"
+              >
+                <option value="Due Date">Due Date</option>
+                <option value="Priority">Priority</option>
+                <option value="Completed">Completed</option>
+              </select>
+              <ChevronDown className="w-3 h-3 text-gray-400 absolute right-2 top-2.5 pointer-events-none" />
+            </div>
 
-          <button 
-            onClick={() => setShowAddModal(true)}
-            className="flex items-center space-x-1.5 px-3 py-1.5 bg-black hover:bg-neutral-800 text-white rounded-lg text-xs font-bold transition-all shadow-xs uppercase tracking-wide cursor-pointer"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Add Task</span>
-          </button>
+            <button 
+              onClick={() => setShowAddModal(true)}
+              className="flex items-center space-x-1.5 px-3 py-1.5 bg-black hover:bg-neutral-800 text-white rounded-lg text-xs font-bold transition-all shadow-xs uppercase tracking-wide cursor-pointer min-h-[34px]"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Add</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -546,7 +548,7 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
                   <div 
                     key={`day-${day}`}
                     onClick={() => setSelectedDate(dateStr)}
-                    className={`min-h-[80px] p-1.5 border rounded-lg transition-all flex flex-col justify-between cursor-pointer group relative ${
+                    className={`min-h-[58px] sm:min-h-[80px] p-1 sm:p-1.5 border rounded-lg transition-all flex flex-col justify-between cursor-pointer group relative ${
                       isSelected 
                         ? "bg-gray-50 border-gray-950 ring-1 ring-gray-950/20" 
                         : isToday 
@@ -556,13 +558,13 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
                   >
                     {/* Day Number */}
                     <div className="flex justify-between items-center">
-                      <span className={`text-xs font-mono font-extrabold ${
+                      <span className={`text-[11px] sm:text-xs font-mono font-extrabold ${
                         isToday ? "text-black underline decoration-2 decoration-black" : "text-gray-500"
                       }`}>
                         {day}
                       </span>
                       {dayTasks.length > 0 && (
-                        <span className="text-[8px] font-bold bg-black text-white px-1 py-0.2 rounded font-mono">
+                        <span className="text-[7px] sm:text-[8px] font-bold bg-black text-white px-1 py-0.2 rounded font-mono">
                           {dayTasks.length}
                         </span>
                       )}
@@ -684,8 +686,8 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
 
       {/* Create Task Modal Overlay */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-fade-in">
-          <div className="bg-white border border-gray-200 rounded-xl shadow-xl max-w-md w-full p-6 animate-scale-up">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 z-50 animate-fade-in">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-xl max-w-md w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto animate-scale-up">
             <h3 className="text-base font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center">
               <Database className="w-5 h-5 text-black mr-2" /> Add Workspace Task
             </h3>
@@ -713,7 +715,7 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
                 />
               </div>
 
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                 <div className="col-span-1">
                   <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-mono mb-1.5">Workspace</label>
                   <select 
@@ -792,8 +794,8 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
 
       {/* Edit Task Modal Overlay */}
       {taskToEdit && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-fade-in">
-          <div className="bg-white border border-gray-250 rounded-xl shadow-xl max-w-md w-full p-6 animate-scale-up">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 z-50 animate-fade-in">
+          <div className="bg-white border border-gray-250 rounded-xl shadow-xl max-w-md w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto animate-scale-up">
             <h3 className="text-base font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center">
               <Edit2 className="w-5 h-5 text-black mr-2 animate-pulse" /> Edit Workspace Task
             </h3>
@@ -819,7 +821,7 @@ export default function TasksView({ state, onAddTask, onToggleTask, onDeleteTask
                 />
               </div>
 
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                 <div className="col-span-1">
                   <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-400 font-mono mb-1.5">Workspace</label>
                   <select 

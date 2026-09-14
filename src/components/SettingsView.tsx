@@ -388,10 +388,10 @@ export default function SettingsView({
   return (
     <div className="max-w-4xl mx-auto w-full space-y-6 pb-12">
       {/* Sub-navigation Headers */}
-      <div className="flex border-b border-gray-250 bg-white p-2 rounded-xl border items-center space-x-2 shadow-3xs animate-fade-in">
+      <div className="flex bg-white p-1.5 sm:p-2 rounded-xl border border-gray-200 items-center gap-1 sm:gap-2 shadow-3xs animate-fade-in overflow-x-auto scrollbar-none">
         <button 
           onClick={() => setActiveSubTab("KB")}
-          className={`flex-1 text-center py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
+          className={`flex-1 min-w-[90px] text-center py-2 sm:py-2.5 px-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer shrink-0 ${
             activeSubTab === "KB" 
               ? "bg-black text-white shadow-2xs font-semibold" 
               : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
@@ -401,7 +401,7 @@ export default function SettingsView({
         </button>
         <button 
           onClick={() => setActiveSubTab("Drive")}
-          className={`flex-1 text-center py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
+          className={`flex-1 min-w-[130px] text-center py-2 sm:py-2.5 px-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer shrink-0 ${
             activeSubTab === "Drive" 
               ? "bg-black text-white shadow-2xs font-semibold" 
               : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
@@ -411,7 +411,7 @@ export default function SettingsView({
         </button>
         <button 
           onClick={() => setActiveSubTab("Settings")}
-          className={`flex-1 text-center py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
+          className={`flex-1 min-w-[85px] text-center py-2 sm:py-2.5 px-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer shrink-0 ${
             activeSubTab === "Settings" 
               ? "bg-black text-white shadow-2xs font-semibold" 
               : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
@@ -1410,8 +1410,8 @@ export default function SettingsView({
 
       {/* Add Workspace Modal */}
       {showAddProfile && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
-          <div className="bg-white border border-gray-200 rounded-xl shadow-xl max-w-sm w-full p-6 animate-scale-up">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-xl max-w-sm w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto animate-scale-up">
             <h3 className="text-sm font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center">
               <Server className="w-4.5 h-4.5 text-black mr-2" /> Add Business Profile
             </h3>
@@ -1449,8 +1449,8 @@ export default function SettingsView({
 
       {/* Log Transaction Modal */}
       {showAddLedger && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
-          <div className="bg-white border border-gray-250 rounded-xl shadow-xl max-w-sm w-full p-6 animate-scale-up">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white border border-gray-250 rounded-xl shadow-xl max-w-sm w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto animate-scale-up">
             <h3 className="text-sm font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center">
               <Database className="w-4.5 h-4.5 text-black mr-2" /> Log Ledger Transaction
             </h3>
@@ -1525,8 +1525,8 @@ export default function SettingsView({
 
       {/* Edit Workspace Modal */}
       {showEditProfile && editingProfile && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
-          <div className="bg-white border border-gray-200 rounded-xl shadow-xl max-w-sm w-full p-6 animate-scale-up">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-xl max-w-sm w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto animate-scale-up">
             <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
               <h3 className="text-sm font-bold text-gray-900 flex items-center">
                 <Server className="w-4.5 h-4.5 text-black mr-2" /> Edit Workspace Profile
@@ -1583,8 +1583,8 @@ export default function SettingsView({
 
       {/* Add Team Member Modal */}
       {showAddTeamModal && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
-          <div className="bg-white border border-gray-250 rounded-xl shadow-xl max-w-sm w-full p-6 animate-scale-up">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white border border-gray-250 rounded-xl shadow-xl max-w-sm w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto animate-scale-up">
             <h3 className="text-sm font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center">
               <UserPlus className="w-4.5 h-4.5 text-black mr-2" /> Add Team Member
             </h3>
@@ -1662,8 +1662,8 @@ export default function SettingsView({
 
       {/* Edit Team Member Modal */}
       {showEditTeamModal && editingTeamMember && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
-          <div className="bg-white border border-gray-250 rounded-xl shadow-xl max-w-sm w-full p-6 animate-scale-up">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white border border-gray-250 rounded-xl shadow-xl max-w-sm w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto animate-scale-up">
             <h3 className="text-sm font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 flex items-center">
               <UserPlus className="w-4.5 h-4.5 text-black mr-2" /> Edit Team Member
             </h3>
