@@ -1,0 +1,20 @@
+[
+  {
+    "id": "usr-1",
+    "email": "jubayera40@gmail.com",
+    "passwordHash": "Artbit24",
+    "name": "Jubayer Alam",
+    "role": "Clinical Operator",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=faces",
+    "createdAt": "2026-08-26T12:57:46.026Z"
+  },
+  {
+    "id": "usr-2",
+    "email": "admin@celouse.io",
+    "passwordHash": "adminpassword",
+    "name": "Clinical Admin",
+    "role": "System Administrator",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces",
+    "createdAt": "2026-08-26T12:57:46.026Z"
+  }
+]
